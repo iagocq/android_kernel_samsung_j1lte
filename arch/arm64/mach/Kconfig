@@ -1,0 +1,52 @@
+if ARCH_MMP
+
+menu "Marvell PXA19x8 Implementations"
+
+config MACH_PXA1908DKB
+	bool "Marvell's PXA1908 DKB"
+	help
+	  Say 'Y' here if you want to support the Marvell PXA1908-based
+	  DKB Board.
+
+config MACH_J1LTE
+	bool "Samsung's PXA1908 J1 LTE Development Board"
+	help
+	  Say 'Y' here if you want to support the Samsung PXA1908-based
+	  J1 LTE Development Board.
+
+config MACH_J1LTE_CHN_CMCC
+	bool "Samsung's PXA1908 J1 LTE CHN CMCC Development Board"
+	help
+	  Say 'Y' here if you want to support the Samsung PXA1908-based
+	  J1 LTE CHN CMCC Development Board.
+
+config MACH_XCOVER3LTE
+	bool "Samsung's PXA1908 XCOVER3LTE Development Board"
+	help
+	  Say 'Y' here if you want to support the Samsung PXA1908-based
+	  XCOVER3LTE Development Board.
+config MACH_J1NLTE
+    bool "Samsung's PXA1908 J1NLTE Development Board"
+     help
+       Say 'Y' here if you want to support the Samsung PXA1908-based
+       J1NLTE Development Board.
+
+config MACH_J1NLTE_SEA_OPEN
+    bool "Samsung's PXA1908 J1NLTE Development Board"
+     help
+       Say 'Y' here if you want to support the Samsung PXA1908-based
+       J1NLTE SEA OPEN Development Board.
+       
+config MACH_DEGASVELTE
+	bool "Samsung's PXA1908 DEGASVELTE Development Board"
+	help
+	  Say 'Y' here if you want to support the Samsung PXA1908-based
+	  DEGASVELTE Development Board.
+
+config SAMSUNG_PRODUCT_SHIP
+    bool "set up for product shipping"
+    default n
+
+endmenu
+
+endif

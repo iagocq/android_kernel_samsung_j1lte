@@ -1,0 +1,99 @@
+/*
+ *	Samsung battery data device source tree
+ *
+ *	Copyright (C) 2014 Marvell Technology Group Ltd.
+ *	Copyright (C) 2014 Samsung Electronics Co, Ltd.
+ *
+ *	This program is free software; you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License version 2 as
+ *	published by the Free Software Foundation.
+ */
+
+
+/{
+	sec_battery {
+		status = "okay";
+		compatible = "samsung,sec-battery";
+		vendor = "SDI SDI";
+		charger_name = "sec-charger";
+		fuelgauge_name = "sec-fuelgauge";
+		technology = <2>; /* POWER_SUPPLY_TECHNOLOGY_LION */
+
+		chg-float-voltage = <4400>;
+
+		chip_vendor = "LSI";
+		polling_time = <10 30 30 30 3600>;
+
+		temp_table_adc = <276 326 383 455 530 629 740 787 866 1013
+			1181 1361 1564 1792 2024 2263 2493 2728 2948 3011
+			3135 3208 3313 3465 3588 3698 3779>;
+		temp_table_data = <900 850 800 750 700 650 600 580 550 500
+			450 400 350 300 250 200 150 100 50 30
+			0 (-20) (-50) (-100) (-150) (-200) (-250)>;
+
+		input_current_limit = <700 0 0 700 500 700 700 500 1000 0 760 950 0 0 0 400 700 700 300 700 700>;
+		fast_charging_current = <1500 0 0 1500 500 1500 1500 500 500 0 900 1500 0 0 0 400 1500 1500 300 700 1500>;
+		full_check_current_1st = <120 0 0 120 120 120 120 120 120 0 120 120 0 0 0 120 120 120 120 120 120>;
+		full_check_current_2nd = <2400 0 0 2400 2400 2400 2400 2400 2400 0 2400 2400 0 0 0 2400 2400 2400 2400 2400 2400>;
+
+		adc_check_count = <5>;
+
+		cable_check_type = <4>; /* SEC_BATTERY_CABLE_CHECK_PSY */
+		cable_source_type = <1>; /* SEC_BATTERY_CABLE_SOURCE_EXTERNAL */
+		event_waiting_time = <600>;
+		polling_type = <1>; /* SEC_BATTERY_MONITOR_ALARM */
+		monitor_initial_count = <0>;
+
+		battery_check_type = <4>; /* SEC_BATTERY_CHECK_FUELGAUGE */
+		check_count = <0>;
+		check_adc_max = <1440>;
+		check_adc_min = <0>;
+
+		ovp_uvlo_check_type = <3>; /* SEC_BATTERY_OVP_UVLO_CHGPOLLING */
+
+		thermal_source = <0>; /* SEC_BATTERY_THERMAL_SOURCE_FG */
+		temp_check_type = <2>; /* SEC_BATTERY_TEMP_CHECK_TEMP */
+		temp_check_count = <1>;
+		temp_highlimit_threshold_event = <800>;
+		temp_highlimit_recovery_event = <750>;
+		temp_highlimit_threshold_normal = <800>;
+		temp_highlimit_recovery_normal = <750>;
+		temp_highlimit_threshold_lpm = <800>;
+		temp_highlimit_recovery_lpm = <750>;
+		temp_high_threshold_event = <600>;
+		temp_high_recovery_event = <460>;
+		temp_low_threshold_event = <(-50)>;
+		temp_low_recovery_event = <0>;
+		temp_high_threshold_normal = <600>;
+		temp_high_recovery_normal = <460>;
+		temp_low_threshold_normal = <(-50)>;
+		temp_low_recovery_normal = <0>;
+		temp_high_threshold_lpm = <600>;
+		temp_high_recovery_lpm = <460>;
+		temp_low_threshold_lpm = <(-50)>;
+		temp_low_recovery_lpm = <0>;
+		full_check_type = <6>; /* SEC_BATTERY_FULLCHARGED_CHGINT */
+		full_check_type_2nd = <3>; /* SEC_BATTERY_FULLCHARGED_TIME */
+		full_check_count = <1>;
+		chg_gpio_full_check = <0>;
+		chg_polarity_full_check = <1>;
+
+		/* SEC_BATTERY_FULL_CONDITION_SOC |
+		   SEC_BATTERY_FULL_CONDITION_NOTIMEFULL |
+		   SEC_BATTERY_FULL_CONDITION_VCELL
+		   SEC_BATTERY_FULL_CONDITION_NOSLEEPINFULL */
+		full_condition_type = <15>;
+		full_condition_soc = <100>;
+		full_condition_vcell = <4300>;
+
+		recharge_check_count = <2>;
+		recharge_condition_type = <4>; /* SEC_BATTERY_RECHARGE_CONDITION_VCELL */
+		recharge_condition_soc = <98>;
+		recharge_condition_vcell = <4350>;
+		recharge_condition_avgvcell = <4350>;
+
+		charging_total_time = <21600>;
+		recharging_total_time = <5400>;
+		charging_reset_time = <0>;
+	};
+};

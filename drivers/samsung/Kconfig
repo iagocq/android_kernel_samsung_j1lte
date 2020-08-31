@@ -1,0 +1,123 @@
+menuconfig SEC_DEBUG
+        bool "Samsung Ramdump Feature"
+        default n
+        help
+          Samsung Ramdump Feature.
+
+if SEC_DEBUG
+config SEC_DEBUG_SCHED_LOG
+        bool "Samsung Scheduler Logging Feature"
+        default n
+	select SEC_DEBUG_TASK_LOG
+        help
+          Samsung Scheduler Logging Feature for Debug use.
+
+config SEC_DEBUG_TASK_LOG
+        bool "Samsung Task Logging Feature"
+        default n
+        depends on SEC_DEBUG_SCHED_LOG
+        help
+          Samsung Task Logging Feature for Debug use.
+
+config SEC_DEBUG_IRQ_LOG
+        bool "Samsung IRQ Logging Feature"
+        default n
+        depends on SEC_DEBUG_SCHED_LOG
+        help
+          Samsung IRQ Logging Feature for Debug use.
+
+config SEC_DEBUG_WORK_LOG
+        bool "Samsung Work Logging Feature"
+        default n
+        depends on SEC_DEBUG_SCHED_LOG
+        help
+          Samsung Work Logging Feature for Debug use.
+
+config SEC_DEBUG_TIMER_LOG
+        bool "Samsung Timer Logging Feature"
+        default n
+        depends on SEC_DEBUG_SCHED_LOG
+        help
+          Samsung Timer Logging Feature for Debug use.
+endif
+
+config SEC_LOG
+        bool "Samsung log buffer"
+        default n
+
+config SEC_LOG_LAST_KMSG
+        bool "Samsung Use Sec Log Last Kmsg"
+        depends on SEC_LOG
+        default n
+        help
+           This feature creats a node to read contents of sec_log_buf
+           area just before booting into kernel from bootloader.
+           This is very helpful to read sec_log_buf area without reset
+           or entering upload mode.
+
+config USER_RESET_DEBUG
+	bool "Reset reason debug feature in user version"
+	default n
+	help
+	  This option provides reset history log in user version.
+	  This option enable proc/reset_reason support
+
+config MACH_PXA_SAMSUNG
+        bool "PXA based Samsung board type"
+        depends on ARCH_MMP
+        default n
+        help
+          PXA based samsung board configuration option.
+
+config EXTCON_S2MM001
+  bool "S2MM001 microUSB Switch"
+  depends on I2C
+  help
+    If you say yes here you will get support for
+    for the S2MM001 MUIC chip.
+
+config EXTCON_SM5504
+	bool "SM5504 microUSB Switch"
+	depends on I2C
+	help
+	  The SM5504 is a USB port accessory detector and switch.
+	  The SM5504 is fully controlled using I2C and enables USB data,
+	  and UART data to use a common connector port.
+
+config EXTCON_SM5502
+	bool "SM5502 microUSB Switch"
+	depends on I2C
+	help
+	  The SM5502 is a USB port accessory detector and switch.
+	  The SM5502 is fully controlled using I2C and enables USB data,
+	  and UART data to use a common connector port.
+
+config SEC_FACTORY
+	bool "when it comes to sec factory mode"
+	default n
+	help
+	  It will support a sec factory mode
+
+config ARM64_THREADINFO_SLABCACHE
+	bool "makes ARM64 kernel uses thread_info_cache"
+	default n
+	help
+	  ARM64 use alloc_pages_node() basically, because of THREAD_SIZE >= PAGE_SIZE
+	  However, let it uses kmem_cache_alloc_node()
+	  Sometimes(Low RAM and so much fragmemtation case), it can help memory operation
+
+
+config THREADINFO_MEMPOOL
+	bool "using mempool for creating task"
+	default n
+	depends on ARM64_THREADINFO_SLABCACHE
+	help
+	  using mempool for creating task
+          
+config SEC_BSP
+	bool "Samsung TN BSP Feature"
+	default n
+	depends on SEC_DEBUG
+	help
+	  Samsung TN BSP Feature.
+
